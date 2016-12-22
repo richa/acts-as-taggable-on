@@ -1,7 +1,9 @@
 # encoding: utf-8
 module ActsAsTaggableOn
   class Tag < ::ActiveRecord::Base
-
+    def self.table_name_prefix
+      ActsAsTaggableOn.table_prefix
+    end
     ### ASSOCIATIONS:
 
     has_many :taggings, dependent: :destroy, class_name: '::ActsAsTaggableOn::Tagging'
